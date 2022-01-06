@@ -19,7 +19,7 @@ jobs:
 
       - name: Docker meta
         id: meta
-        uses: crazy-max/ghaction-docker-meta@v2
+        uses: docker/metadata-action@v3
         with:
           images:
             scodock/php-fpm
@@ -27,7 +27,7 @@ jobs:
             suffix=-${{ matrix.php_version }}
           tags: |
             type=schedule,pattern={{date 'YYYYMMDD'}}
-            type=ref,event=branch
+            # type=ref,event=branch
             type=semver,pattern={{version}}
             type=raw,value=latest
 
